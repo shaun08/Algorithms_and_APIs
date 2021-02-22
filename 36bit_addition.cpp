@@ -1,5 +1,5 @@
-// 2021-02-20: SHAUN08 --> C++ program to add 2 uint36_t's using only uint4_t and uint5_t
-//                         (replication on 64 bit machine)
+// 2021-02-22: SHAUN08 --> C++ program to add 2 uint36_t's using only uint4_t and uint5_t
+//                         NOTE: this program is an attempt to replicate the problem above on a 64-bit machine
 
 
 /* Header includes */
@@ -130,10 +130,10 @@ uint36_t add_36bit_numbers(uint36_t& a, uint36_t& b, bool& overflow)
 	{
 		sum.five_bit_nrs[i] = a.five_bit_nrs[i] + b.five_bit_nrs[i] + carry;
 		
-		// This check for overflow is done such that it works on 64-bit machine
+		// This check for overflow is done to get uint5_t working right on 64-bit machine
 		carry = (sum.five_bit_nrs[i] > MAX_5BIT_UINT) ? 1 : 0;
 
-		// This wont be necessary if machine support was just 4/5 bit
+		// This wont be necessary if machine running the program supports only 5 bit additions
 		sum.five_bit_nrs[i] = CONVERT_TO_UINT5_T(sum.five_bit_nrs[i]);
 	}
 
@@ -141,10 +141,10 @@ uint36_t add_36bit_numbers(uint36_t& a, uint36_t& b, bool& overflow)
 	{
 		sum.four_bit_nrs[i] = a.four_bit_nrs[i] + b.four_bit_nrs[i] + carry;
 
-		// This check for overflow is done such that it works on 64-bit machine
+		// This check for overflow is done to get uint4_t working right on 64-bit machine
 		carry = (sum.four_bit_nrs[i] > MAX_4BIT_UINT) ? 1 : 0;
 
-		// This wont be necessary if machine support was just 4/5 bit
+		// This wont be necessary if machine running the program supports only 4 bit additions
 		sum.four_bit_nrs[i] = CONVERT_TO_UINT4_T(sum.four_bit_nrs[i]);
 	}
 
@@ -153,7 +153,6 @@ uint36_t add_36bit_numbers(uint36_t& a, uint36_t& b, bool& overflow)
 	return sum;
 }
 
-#if 1
 int main()
 {
 	bool overflow = false;
@@ -184,4 +183,3 @@ int main()
 
 	return 0;
 }
-#endif
