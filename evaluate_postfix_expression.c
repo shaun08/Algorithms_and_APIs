@@ -1,5 +1,5 @@
-// 2021-02-21: SHAUN08 --> C Program to evaluate postfix algebraic expression on a given set of strings
-//                         NOTE: Supported algebraic operators: only +, -, * and /
+// 2021-02-22: SHAUN08 --> C Program to evaluate postfix algebraic expression on a given set of strings
+//                         NOTE: Supported algebraic operators: +, -, * and /
 
 #include <ctype.h>
 #include <stdio.h>
@@ -110,8 +110,8 @@ FuncState_t evaluatePostfix(const uint8_t postfix_size, char* postfix[], int* re
         return STATUS_INVALID;
 
     // Stack to store all integers present in post fix
-    // NOTE: Using an array here as C does not have built-in stack data type
-    //       like std::stack in C++
+    // NOTE: Using an array here as makeshift stack here as C does not have built-in stack data type
+    //       like std::stack in C++ and creating a C stack structure is not part of this problem
     int num_stack[MAX_STR_SIZE] = {0};
     int num_stack_top = -1; // Index to track top of stack
 
