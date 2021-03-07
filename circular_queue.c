@@ -158,8 +158,6 @@ int dequeue()
         front = (front+1)%queue_size;
     
     return ret_val;
-
-    printQueue();
 }
 
 int main()
