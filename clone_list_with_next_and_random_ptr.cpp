@@ -77,6 +77,7 @@ public:
         std::cout << "List:" << std::endl;
 
         Node* temp = m_head;
+
         while(temp)
         {
             std::cout << "Data: " << temp->data;
