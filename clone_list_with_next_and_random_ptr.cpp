@@ -2,8 +2,8 @@
 
 Problem: Write a program to clone a linked list with next and random pointer
 Note: the random pointer is guaranteed to be one of the nodes in the list or NULL
-Example:
 
+Example:
 Original List
 1 - 2 - 3 - 4 - 5 - NULL
 |   |   |   |   |
