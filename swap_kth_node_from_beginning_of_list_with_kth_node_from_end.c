@@ -143,14 +143,11 @@ void swapKthNodes(Node** head, int k)
     k_beg->next = temp;
 
     // Set the head node if it was swapped
-    if(k==1 || k==count)
-    {
-        if(k_beg_prev == NULL)
-            *head = k_end;
+    if(k==1)
+        *head = k_end;
         
-        if(k_end_prev == NULL)
-            *head = k_beg;
-    }
+    if(k == count)
+        *head = k_beg;
 }
 
 int main()
