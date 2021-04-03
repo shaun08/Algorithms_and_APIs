@@ -3,10 +3,11 @@
 Problem: Write a program to find the maximum sum of subarrays within an array and also print the subarray
 Note:
 1 - The subarrays should be contiguous
-2 - The maximum sum should be greater than 0 (array with all negative numbers will return max sum as 0)
-3 - Subarray can also be the actual array itself
+2 - Subarray can also be the actual array itself
 */
 
+#include <assert.h>
+#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -44,11 +45,17 @@ bool maxSumSubArray(int *arr, int size, int* max_sum, int* start_idx, int* end_i
     }
     
     int start = 0, end = 0, sub_idx = 0, i=0;
-    int max_so_far = 0, current_max = 0;
+    int max_so_far = INT_MIN, current_max = INT_MIN;
 
     for(i=0; i<size; i++)
     {
-        current_max += arr[i];
+        if(arr[i] > current_max + arr[i])
+        {
+            current_max = arr[i];
+            sub_idx = i;
+        }
+        else
+            current_max += arr[i];
 
         if(current_max > max_so_far)
         {
@@ -56,15 +63,9 @@ bool maxSumSubArray(int *arr, int size, int* max_sum, int* start_idx, int* end_i
             start = sub_idx;
             end = i;
         }
-
-        if(current_max < 0)
-        {
-            current_max = 0;
-            sub_idx = i+1;
-        }
     }
 
-    if(max_so_far > 0)
+    if(max_so_far > INT_MIN)
     {
         *max_sum = max_so_far;
         *start_idx = start;
@@ -89,7 +90,7 @@ int main()
     bool max_found = maxSumSubArray(arr, ARR_SIZE, &max_sum, &start_idx, &end_idx);
 
     if(!max_found)
-        printf("No subarray with sum greater than 0\n");
+        printf("No subarray with sum greater than 0\n\n");
     else
     {
         printf("Maximum sum of subarrays in the list above: %d\n", max_sum);
@@ -99,21 +100,21 @@ int main()
     }
 
     // TEST 2
-    int arr2[ARR_SIZE] = {-4, -3, -2, -2, -3, -1, -2, -3, -4, -2, -6, -3, -1, -3, -1, -2};
+    int arr2[ARR_SIZE/2] = {-2, -3, 4, -1, -2, 1, 5, -3};
     printf("Second ");
-    printArray(arr2, ARR_SIZE);
+    printArray(arr2, ARR_SIZE/2);
 
     int start_idx2 = -1;
     int end_idx2 = -1;
     int max_sum2 = 0;
     
-    bool max_found2 = maxSumSubArray(arr2, ARR_SIZE, &max_sum2, &start_idx2, &end_idx2);
+    bool max_found2 = maxSumSubArray(arr2, ARR_SIZE/2, &max_sum2, &start_idx2, &end_idx2);
 
     if(!max_found2)
         printf("No subarray with sum greater than 0\n\n");
     else
     {
-        printf("Maximum sum of subarrays in the list above: %d\n\n", max_sum2);
+        printf("Maximum sum of subarrays in the list above: %d\n", max_sum2);
         printf("Sub");
         printArray(&arr2[start_idx2], end_idx2-start_idx2+1);
         printf("\n");
@@ -139,6 +140,16 @@ int main()
         printArray(&arr3[start_idx3], end_idx3-start_idx3+1);
         printf("\n");
     }
+
+    // TEST 4
+    printf("Null Array passed\n");
+    bool max_found4 = maxSumSubArray(NULL, ARR_SIZE, &max_sum3, &start_idx3, &end_idx3);
+    assert(max_found4 == false);
+
+    // TEST 5
+    printf("Passing array size less than 1\n");
+    bool max_found5 = maxSumSubArray(arr3, -2, &max_sum3, &start_idx3, &end_idx3);
+    assert(max_found5 == false);
 
     return 0;
 }
