@@ -29,13 +29,20 @@ void printArray(int* arr, int size)
 
 bool maxSumSubArray(int *arr, int size, int* max_sum, int* start_idx, int* end_idx)
 {
-    if(arr == NULL)
-        printf("ERROR: ARRAY passed is NULL\n\n");
-
-    if(size <=0)
-        printf("ERROR: Invalid size (%d) passed for array\n\n", size);
-        
     bool max_found = false;
+    
+    if(arr == NULL)
+    {
+        printf("ERROR: ARRAY passed is NULL\n\n");
+        return max_found;
+    }
+
+    if(size <= 0)
+    {
+        printf("ERROR: Invalid size (%d) passed for array\n\n", size);
+        return max_found;
+    }
+    
     int start = 0, end = 0, sub_idx = 0, i=0;
     int max_so_far = 0, current_max = 0;
 
