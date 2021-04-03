@@ -142,8 +142,9 @@ int main()
     cout << "Original ";
     printList(head);
 
-    cout << "Rotate List Clockwise with K=3" << endl << "New ";
+    cout << "Rotate List Clockwise with K=3" << endl;
     rotateList(&head, 3, true);
+    cout <<  "New ";
     printList(head);
 
     cout << "Rotated List Counter-clockwise with K=11" << endl;
