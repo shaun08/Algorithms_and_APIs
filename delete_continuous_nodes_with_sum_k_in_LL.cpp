@@ -69,7 +69,7 @@ void deleteContinuousNodes(Node** head, int k)
             Node* prev = sum_map[sum-k];
             Node* start = prev->next;
             Node* end = curr->next;
-            int aux = sum;
+            int aux = sum-k;
             sum = sum-k;
 
             while(start != end)
