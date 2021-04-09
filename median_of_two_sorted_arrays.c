@@ -4,6 +4,7 @@ Problem: Write a program to return the median value of two sorted arrays
 NOTE- Array sizes range from 0 to 1000
 */
 
+#include<assert.h>
 #include <stdio.h>
 
 #define SIZE 6
@@ -90,7 +91,8 @@ int main()
     // Test arrays with 0 elements
     printf("Median of empty and third array: %3.2lf\n\n", medianOfTwoSortedArrays(arr2, 0, arr3, SIZE-1));
     printf("Median of second and empty array: %3.2lf\n\n", medianOfTwoSortedArrays(arr2, SIZE, arr3, 0));
-    printf("Median of both empty array: %3.2lf\n\n", medianOfTwoSortedArrays(arr2, 0, arr3, 0));
+    printf("Median of both empty array:\n");
+    assert(0.0 == medianOfTwoSortedArrays(arr2, 0, arr3, 0));
     
     return 0;
 }
