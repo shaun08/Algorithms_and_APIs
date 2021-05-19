@@ -9,10 +9,10 @@ Hint: Use 3 pointers - low, mid, high
 */
 
 #include <math.h>
-#include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define arr_size 9
 #define val1 2
@@ -116,8 +116,6 @@ bool sortArray2(int arr[], int size)
 
     return true;
 }
-
-
 
 int main()
 {
