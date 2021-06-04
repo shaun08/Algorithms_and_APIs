@@ -3,10 +3,10 @@
 Problem: Find an element in an sorted and rotated array
 Note: The array passed is always valid with no duplicates
 
-Example1: Find 5, 2, 8 in array {4, 5, 6, 7, 1, 2, 3}
+Example1: Find 5, 2, 3, 4, 8 in array {4, 5, 6, 7, 1, 2, 3}
 Solution: 5->true, 2->true, 3->true, 4->true, 8->false
 
-Example2: Find 6, 4, 18 in array {7, 8, 9, 1, 2, 3, 4, 5, 6}
+Example2: Find 6, 9, 4, 7, 18 in array {7, 8, 9, 1, 2, 3, 4, 5, 6}
 Solution: 6->true, 9->true, 4->true, 7->true, 18->false
 
 */
