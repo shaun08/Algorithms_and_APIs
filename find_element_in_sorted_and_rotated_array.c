@@ -49,10 +49,10 @@ bool findElemInSortedRotatedArr(int *arr, int arr_size, int element)
         
         else if(arr[low] > arr[mid]) // Left of mid is sorted and rotated array
         {
-            if( (arr[mid] < element) && (arr[high] > element) )
-                low = mid+1; // Search right of mid
-            else
-                high = mid-1; // Search left of mid
+            if( (arr[mid] < element) && (arr[high] > element) ) // Search right of mid
+                low = mid+1;
+            else // Search left of mid
+                high = mid-1;
         }
         
         else // Left of mid is sorted array
